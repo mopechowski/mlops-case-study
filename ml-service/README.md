@@ -19,4 +19,4 @@ To run the Scikit-Learn Server from CLI:
 ```shell
 python -m sklearnserver --model_dir model
 ```
-**Note:** This will not work on Windows, because [Windows doesn't support Signals](https://docs.python.org/3.11/library/asyncio-platforms.html#windows) and the ` loop.add_signal_handler()` method fails. Use the `ml-service` Docker image instead.
+**Note:** This will not work on Windows, because [Windows doesn't support Signals](https://docs.python.org/3.11/library/asyncio-platforms.html#windows) and the `loop.add_signal_handler()` method fails. Use the `ml-service` Docker image instead.
