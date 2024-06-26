@@ -3,3 +3,4 @@
 data/*
 condaenv.*
 *.egg-info/
+/ml-service/model/*
