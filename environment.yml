@@ -1,0 +1,17 @@
+name: mlops-dev
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11  # kserve: ">=3.8,<3.12"y
+  - cython
+  - ipython
+  - pytest
+  - numpy
+  - numba
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - pip
+  - pip:
+      - kserve[storage]
