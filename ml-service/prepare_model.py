@@ -1,6 +1,7 @@
 # Based on: https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html
 import os
 from joblib import dump
+from pathlib import Path
 
 import matplotlib
 matplotlib.use('Qt5Agg')
@@ -59,6 +60,9 @@ if __name__ == '__main__':
     # Read in the digits datasets and plot it:
     digits = datasets.load_digits()
     plot_digits(digits.images, digits.target, 'Training')
+    
+    # Save the dataset for later use
+    dump(digits, filename=Path('../data/digits.joblib'))
     
     # Flatten the images:
     n_samples = len(digits.images)

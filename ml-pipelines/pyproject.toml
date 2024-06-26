@@ -1,0 +1,17 @@
+[project]
+name = "pipelines"
+version = "0.0.1"
+readme = "README.md"
+requires-python = "~=3.11"
+dependencies = [
+    "kserve",
+    "scikit-learn",
+    "joblib",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
