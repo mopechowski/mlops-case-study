@@ -66,20 +66,41 @@ conda list
 ## The Solution
 
 ### Inference Service
-[WIP] Go to the [ml-service](ml-service) directory, prepare a model artifact and test a `Model`.
+Go to the [ml-service](ml-service) directory to prepare and test a `Model` artifact.
 
-Build the ml-service image with `ModelServer` that will be serving a model through REST API:
+Build the `ml-service` image with `ModelServer` that will be serving a model through the REST API:
 ```shell
 docker buildx build -t ml-service --progress plain -f ml-service.Dockerfile .
 ```
+
+To verify the image:
+```shell
+docker image ls ml-service
+```
+
 To rebuild the image from scratch:
 ```shell
 docker buildx build -t ml-service --progress plain --no-cache --pull -f Dockerfile .
 ```
-To run `ModelServer` run:
+
+To run the containerized Inference Service:
 ```shell
 docker run -it -p 8080:8080 ml-service
 ```
+
+Once the service starts you can open the `/metrics` endpoint in your browser: http://localhost:8080/metrics and observe how the endpoint behaves.
+
+To test the REST API run the simple script (a cURL replacement on Windows):
+```shell
+python try_ml_service.py
+```
+
+The output should be:
+```text
+<Response [200]>
+{"predictions":[8,9,8]}
+```
+
 
 ### Batch Inference Pipeline
 WIP...
