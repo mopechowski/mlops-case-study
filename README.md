@@ -4,7 +4,7 @@
 
 ### Inference Service
 - Hosts the model as an RESTful API service that allows users to submit new data and receive predictions from
-  - Model training is not important here, it can be any simple example model or pretrained one from the web. 
+  - Model training is not important here, it can be any simple example model or pretrained one from the web.
 
 ### Batch Inference Pipeline
 * Pipeline components/steps:
@@ -99,7 +99,6 @@ The output should be:
 {"predictions":[8,9,8]}
 ```
 
-
 ### Batch Inference Pipeline
 Go to the [ml-pipelines](ml-pipelines) directory to build and test the `pipelines` components.
 
@@ -144,3 +143,18 @@ Pipeline: PostProcessor step starting...
 Pipeline: PostProcessor step DONE!
 Pipeline DONE!
 ```
+
+### Monitoring and Observability
+* Logging, emitting metrics, proper app instrumentation and monitoring -> to be discussed
+
+### Software Development standards
+* Testing - showed a proper structure -> details to be discussed
+* Code Quality
+  * focused on a good repo layout and code structure
+  * DRY needed (lack of time)
+  * details to be discussed
+* Documentation
+  * skipped (lack of time) included only some docstrings -> to be discussed
+
+### Fine-tuning of the model
+* I recommend performing HPO with [Optuna](https://optuna.org/) framework
