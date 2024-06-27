@@ -3,4 +3,5 @@
 data/*
 condaenv.*
 *.egg-info/
+__pycache__/
 /ml-service/model/*

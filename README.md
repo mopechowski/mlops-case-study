@@ -1,7 +1,5 @@
 # MLOps Case Study
 
----
-
 ## Main components of the Solution
 
 ### Inference Service
