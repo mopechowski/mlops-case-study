@@ -37,7 +37,7 @@ def preprocess(data_dir: str, input_file: str, output_file: str):
 
 if __name__ == '__main__':
     if len(sys.argv) != 4:
-        logger.error(f"Wrong arguments passed: {sys.argv}")
-        raise RuntimeError("You need to provide exactly TWO positional arguments: data_dir and filename!")
+        logger.error(f"Wrong number of arguments passed: {sys.argv}")
+        raise RuntimeError("You need to provide exactly THREE positional arguments: data_dir input_file output_file!")
     logger.info(f"Hello from PreProcessor! Args: {sys.argv[1:]}")
     preprocess(sys.argv[1], sys.argv[2], sys.argv[3])
