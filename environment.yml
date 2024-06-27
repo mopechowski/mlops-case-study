@@ -12,6 +12,7 @@ dependencies:
   - scikit-learn
   - pandas
   - matplotlib
+  - docker-py
   - pip
   - pip:
       - kserve[storage]

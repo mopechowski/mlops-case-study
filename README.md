@@ -132,8 +132,15 @@ Once the service is ready, run the batch pipeline:
 ```shell
 python batch_inference_pipeline.py
 ```
-
-The output looks like:
+The output should look like this:
 ```text
-
+(mlops-dev) ..\mlops-case-study>python batch_inference_pipeline.py
+Starting the pipeline...
+Pipeline: PreProcessor step starting...
+Pipeline: PreProcessor step DONE!
+Pipeline: ModelScore step starting...
+Pipeline: ModelScore step DONE!
+Pipeline: PostProcessor step starting...
+Pipeline: PostProcessor step DONE!
+Pipeline DONE!
 ```
