@@ -12,7 +12,7 @@ pytest
 
 To run individual components respectively:
 ```shell
-python -m pipelines.components.preprocessor ../data digits.joblib
+python -m pipelines.components.preprocessor ../data digits.joblib instances.joblib
 ```
 ```shell
 python -m pipelines.components.scorer ../data instances.joblib 

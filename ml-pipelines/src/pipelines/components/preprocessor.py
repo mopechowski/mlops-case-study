@@ -12,32 +12,32 @@ logging.basicConfig(
 logger = logging.getLogger("PreProcessor")
 
 
-def preprocess(data_dir: str, filename: str):
-    """Preprocesses the input file and saves the results to data_dir.
+def preprocess(data_dir: str, input_file: str, output_file: str):
+    """Preprocesses the input_file and saves the results to output_file in the data_dir.
 
     Returns:
         str: a path to the output file if successful
     """
     
     data_path = Path(data_dir).resolve()
-    filepath = data_path / Path(filename)
-    if not filepath.exists():
-        raise FileNotFoundError(f"Input file not found: {filepath}")
+    input_path = data_path / Path(input_file)
+    if not input_path.exists():
+        raise FileNotFoundError(f"Input file not found: {input_path}")
     
-    input_data = load(filepath)
+    input_data = load(input_path)
     n_samples = len(input_data.images)
     logger.info(f"Successfully loaded {n_samples} input samples.")
     
     output_data = input_data.images.reshape((n_samples, -1))
-    output_data_path = data_path / 'instances.joblib'
+    output_data_path = data_path / output_file
     dump(output_data, filename=output_data_path)
     logger.info(f"Preprocessed data saved to: {output_data_path}")
     return str(output_data_path)
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
         logger.error(f"Wrong arguments passed: {sys.argv}")
         raise RuntimeError("You need to provide exactly TWO positional arguments: data_dir and filename!")
     logger.info(f"Hello from PreProcessor! Args: {sys.argv[1:]}")
-    preprocess(sys.argv[1], sys.argv[2])
+    preprocess(sys.argv[1], sys.argv[2], sys.argv[3])
