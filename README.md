@@ -80,7 +80,7 @@ docker image ls ml-service
 
 To rebuild the image from scratch:
 ```shell
-docker buildx build -t ml-service --progress plain --no-cache --pull -f Dockerfile .
+docker buildx build -t ml-service --progress plain --no-cache --pull -f ml-service.Dockerfile .
 ```
 
 To run the containerized Inference Service:
@@ -103,4 +103,39 @@ The output should be:
 
 
 ### Batch Inference Pipeline
-WIP...
+Go to the [ml-pipelines](ml-pipelines) directory to build and test the `pipelines` components.
+
+Build the `ml-pipelines` image with the components that will be used in the batch prediction pipeline:
+```shell
+docker buildx build -t ml-pipelines --progress plain -f ml-pipelines.Dockerfile .
+```
+
+To verify the image:
+```shell
+docker image ls ml-pipelines
+```
+
+You can also run it to see if it works as expected:
+```shell
+docker run -it ml-pipelines
+```
+
+To rebuild the image from scratch:
+```shell
+docker buildx build -t ml-pipelines --progress plain --no-cache --pull -f ml-pipelines.Dockerfile .
+```
+
+To run the pipeline, first you need to start the Inference Service:
+```shell
+docker run -it -p 8080:8080 ml-service
+```
+
+Once the service is ready, run the batch pipeline:
+```shell
+python batch_inference_pipeline.py
+```
+
+The output looks like:
+```text
+
+```
