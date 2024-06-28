@@ -1,7 +1,9 @@
 .idea/
 .pytest_cache/
-data/*
+__pycache__/
 condaenv.*
 *.egg-info/
-__pycache__/
-/ml-service/model/*
+*.pyc
+
+data/*
+ml-service/model/*
