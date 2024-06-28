@@ -66,7 +66,7 @@ RUN \
 
 
 # Runtime distroless container image for execution only (i.e. no interactive shell and package manager)
-FROM gcr.io/distroless/base-debian11:latest AS app
+FROM gcr.io/distroless/base-debian11:latest AS app-image
 
 ENV PYTHONUNBUFFERED=1
 ENV CONDA_PREFIX="/env"
@@ -74,10 +74,11 @@ ENV CONDA_DEFAULT_ENV="/env"
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH=${CONDA_PREFIX}/bin:${PATH}
 
-# Pandas installed via pip requires the libstdc++.so.6 in OS
-COPY --from=env-clean "/usr/lib/x86_64-linux-gnu/libstdc++.so.6*" /usr/lib/x86_64-linux-gnu/
+# Copy the "clean" lightweight env to the runtime container image:
 COPY --from=env-clean /env /env
+# Here I copy the model artifact, but in real life it would be better to just mount it or download from storage:
 COPY ./ml-service/model /model
 
+# Set a default entrypoint, the command will be overwirtten by a scheduler:
 ENTRYPOINT ["/env/bin/python", "-m", "sklearnserver"]
 CMD ["--model_dir", "/model"]
